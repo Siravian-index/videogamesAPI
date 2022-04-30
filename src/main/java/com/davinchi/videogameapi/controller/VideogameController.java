@@ -16,7 +16,6 @@ public class VideogameController {
 
     private final VideogameServiceImplementation videogameServiceImplementation;
 
-    @Autowired
     public VideogameController(VideogameServiceImplementation videogameServiceImplementation) {
         this.videogameServiceImplementation = videogameServiceImplementation;
     }
