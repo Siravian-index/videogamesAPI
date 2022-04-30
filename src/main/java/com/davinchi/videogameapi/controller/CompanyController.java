@@ -27,7 +27,9 @@ public class CompanyController {
         return companyService.createCompany(company);
     }
 
-//    @DeleteMapping
-
+    @DeleteMapping
+    public void deleteCompany(@RequestBody Company company) {
+        companyService.deleteCompany(company);
+    }
 
 }
