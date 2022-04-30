@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "videogame")
 @Data
 public class Videogame {
     @Id
@@ -14,4 +14,7 @@ public class Videogame {
     private String title;
     private String genre;
     private Double price;
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 }
