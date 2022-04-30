@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyServiceImplementation implements ICompanyService{
 
     private final CompanyRepository companyRepository;
 
+    @Autowired
     public CompanyServiceImplementation(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
     }
@@ -28,6 +30,12 @@ public class CompanyServiceImplementation implements ICompanyService{
 
     @Override
     public Boolean deleteCompany(Company company) {
-        return null;
+        Long id = company.getId();
+        Optional<Company> byId = companyRepository.findById(id);
+        if (byId.isPresent()) {
+            companyRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
