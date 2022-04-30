@@ -14,7 +14,5 @@ public class Videogame {
     private String title;
     private String genre;
     private Double price;
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
+    private Long companyFK;
 }

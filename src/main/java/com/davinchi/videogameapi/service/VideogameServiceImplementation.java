@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 
 @Service
-public class VideogameServiceImplementation implements  IVideogameService{
+public class VideogameServiceImplementation implements IVideogameService {
 
     private final VideogameRepository videogameRepository;
     private final CompanyRepository companyRepository;
@@ -29,33 +29,20 @@ public class VideogameServiceImplementation implements  IVideogameService{
 
     @Override
     public Company addVideogame(Videogame videogame) {
-        Company company = videogame.getCompany();
-        List<Videogame> videogameList = company.getVideogameList();
-        boolean contains = videogameList.contains(videogame);
-        if (!contains) {
+        Optional<Company> companyOptional = companyRepository.findById(videogame.getId());
+        if (companyOptional.isPresent()) {
+            Company company = companyOptional.get();
             company.addVideogame(videogame);
-            companyRepository.save(company);
             videogameRepository.save(videogame);
-            return company;
+            return companyRepository.save(company);
         }
-        return company;
+        System.out.println("Cannot add videogame to a non-existent company");
+        return null;
     }
 
     @Override
-    public Boolean deleteVideogame(Videogame videogame) {
-        Company company = videogame.getCompany();
-        List<Videogame> filtered = company
-                .getVideogameList()
-                .stream()
-                .filter(videogame1 -> !Objects.equals(videogame1.getId(), videogame.getId()))
-                .toList();
-        if (filtered.size() < company.getVideogameList().size()) {
-            company.setVideogameList(filtered);
-            videogameRepository.deleteById(videogame.getId());
-            companyRepository.save(company);
-            return true;
-        }
-        return false;
+    public void deleteVideogame(Videogame videogame) {
+        videogameRepository.deleteById(videogame.getId());
     }
 
 

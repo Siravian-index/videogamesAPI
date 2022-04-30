@@ -1,8 +1,9 @@
 package com.davinchi.videogameapi.controller;
 
 import com.davinchi.videogameapi.entity.Company;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.davinchi.videogameapi.service.CompanyServiceImplementation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -10,9 +11,23 @@ import java.util.List;
 @RequestMapping("api/v1/companies")
 public class CompanyController {
 
-//    re
-//    member to use @RequestBody
-//    List<Company> getAllCompanies() {
-//
-//    }
+    private final CompanyServiceImplementation companyService;
+
+    @Autowired
+    public CompanyController(CompanyServiceImplementation companyService) {
+        this.companyService = companyService;
+    }
+    @GetMapping
+    List<Company> getAllCompanies() {
+        return companyService.getAllCompanies();
+    }
+
+    @PostMapping
+    Company createCompany(@RequestBody Company company) {
+        return companyService.createCompany(company);
+    }
+
+//    @DeleteMapping
+
+
 }

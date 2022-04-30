@@ -29,13 +29,7 @@ public class CompanyServiceImplementation implements ICompanyService{
     }
 
     @Override
-    public Boolean deleteCompany(Company company) {
-        Long id = company.getId();
-        Optional<Company> byId = companyRepository.findById(id);
-        if (byId.isPresent()) {
-            companyRepository.deleteById(id);
-            return true;
-        }
-        return false;
+    public void deleteCompany(Company company) {
+        companyRepository.deleteById(company.getId());
     }
 }

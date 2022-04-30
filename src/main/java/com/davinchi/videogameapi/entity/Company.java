@@ -3,6 +3,7 @@ package com.davinchi.videogameapi.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,7 @@ public class Company {
     private String name;
     private String ceo;
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Videogame> videogameList;
+    private List<Videogame> videogameList = new ArrayList<>();
 
     public Company addVideogame(Videogame videogame) {
         this.videogameList.add(videogame);
