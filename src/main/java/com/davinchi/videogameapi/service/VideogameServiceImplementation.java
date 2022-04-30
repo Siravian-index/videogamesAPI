@@ -1,5 +1,6 @@
 package com.davinchi.videogameapi.service;
 
+import com.davinchi.videogameapi.entity.Company;
 import com.davinchi.videogameapi.entity.Videogame;
 import com.davinchi.videogameapi.repository.VideogameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,15 @@ public class VideogameServiceImplementation implements  IVideogameService{
     @Override
     public List<Videogame> getAllVideogames() {
         return repository.findAll();
+    }
+
+    @Override
+    public Company addVideogame(Videogame videogame) {
+        return null;
+    }
+
+    @Override
+    public Boolean deleteVideogameFrom(Company company) {
+        return null;
     }
 }
