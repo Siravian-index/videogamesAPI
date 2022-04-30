@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface IVideogameService {
     List<Videogame> getAllVideogames();
-//    List<Videogame> getVideogamesFromACompany()
+//    List<Videogame> getVideogamesFrom(Company company);
+//    Boolean deleteVideogameFrom(Company company);
+//
 
 }

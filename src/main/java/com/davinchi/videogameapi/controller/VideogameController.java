@@ -22,9 +22,6 @@ public class VideogameController {
 
     @GetMapping
     public List<Videogame> getAllVideogames() {
-        List<Videogame> allVideogames = videogameServiceImplementation.getAllVideogames();
-        System.out.println("controller:");
-        System.out.println(allVideogames);
-        return allVideogames;
+        return videogameServiceImplementation.getAllVideogames();
     }
 }

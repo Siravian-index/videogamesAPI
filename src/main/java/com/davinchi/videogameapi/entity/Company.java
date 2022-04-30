@@ -14,7 +14,12 @@ public class Company {
     private Long id;
     private String name;
     private String ceo;
-    @OneToMany(mappedBy = "Company", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Videogame> videogameList;
+
+    public Company addVideogame(Videogame videogame) {
+        this.videogameList.add(videogame);
+        return this;
+    }
 
 }

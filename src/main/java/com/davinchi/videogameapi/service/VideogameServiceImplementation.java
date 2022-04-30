@@ -19,10 +19,6 @@ public class VideogameServiceImplementation implements  IVideogameService{
 
     @Override
     public List<Videogame> getAllVideogames() {
-        System.out.println("calling findAll");
-        System.out.println("ServiceImplementation:");
-        List<Videogame> all = repository.findAll();
-        System.out.println(all);
-        return all;
+        return repository.findAll();
     }
 }
