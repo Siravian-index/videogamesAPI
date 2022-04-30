@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("api/v1/videogames")
 public class VideogameController {
 
@@ -22,6 +23,9 @@ public class VideogameController {
 
     @GetMapping
     public List<Videogame> getAllVideogames() {
-        return videogameServiceImplementation.getAllVideogames();
+        List<Videogame> allVideogames = videogameServiceImplementation.getAllVideogames();
+        System.out.println("controller:");
+        System.out.println(allVideogames);
+        return allVideogames;
     }
 }
