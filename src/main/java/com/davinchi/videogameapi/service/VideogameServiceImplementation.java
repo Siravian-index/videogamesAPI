@@ -29,7 +29,7 @@ public class VideogameServiceImplementation implements IVideogameService {
 
     @Override
     public Company addVideogame(Videogame videogame) {
-        Optional<Company> companyOptional = companyRepository.findById(videogame.getId());
+        Optional<Company> companyOptional = companyRepository.findById(videogame.getCompanyFK());
         if (companyOptional.isPresent()) {
             Company company = companyOptional.get();
             company.addVideogame(videogame);
