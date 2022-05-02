@@ -1,7 +1,6 @@
 package com.davinchi.videogameapi.service;
 
 import com.davinchi.videogameapi.entity.Company;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
